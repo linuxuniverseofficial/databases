@@ -1,0 +1,33 @@
+# Definir o nome do banco
+DB="meu_banco.db"
+
+# 1. Iniciar/Criar o banco e criar uma tabela
+sqlite3 $DB "CREATE TABLE IF NOT EXISTS usuarios (id INTEGER PRIMARY KEY, nome TEXT, idade INTEGER);"
+
+# 2. Inserir dados
+sqlite3 $DB "INSERT INTO usuarios (nome, idade) VALUES ('Alice', 30), ('Bob', 25);"
+
+# 3. Editar dados (UPDATE)
+sqlite3 $DB "UPDATE usuarios SET idade = 31 WHERE nome = 'Alice';"
+
+# 4. Deletar dados
+sqlite3 $DB "DELETE FROM usuarios WHERE nome = 'Bob';"
+
+# 5. Consultar dados
+echo "Dados atuais:"
+sqlite3 $DB "SELECT * FROM usuarios;"
+
+sqlite3 $DB <<EOF
+  INSERT INTO usuarios (nome, idade) VALUES ('Carlos', 40);
+  UPDATE usuarios SET idade = 45 WHERE nome = 'Carlos';
+  DELETE FROM usuarios WHERE idade > 50;
+EOF
+
+# Ler um valor para uma variável
+IDADE_ALICE=$(sqlite3 $DB "SELECT idade FROM usuarios WHERE nome = 'Alice';")
+echo "A idade da Alice é: $IDADE_ALICE"
+
+Resumo das Flags Úteis
+-column: Exibe o resultado formatado em colunas.
+-header: Inclui o cabeçalho das colunas no resultado.
+-csv: Formata a saída como CSV (ideal para processar com awk ou cut).
