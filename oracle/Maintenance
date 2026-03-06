@@ -1,0 +1,16 @@
+# User specific aliases and functions for Oracle!
+umask 022
+export ORAENV_ASK=NO
+export ORACLE_SID=XE
+export ORACLE_HOME=/opt/oracle/product/21c/dbhomeXE
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/opt/oracle/product/21c/dbhomeXE/bin
+  #. /opt/oracle/product/21c/dbhomeXE/bin/oraenv
+
+# Commands:
+alias listener='lsnrctl status'
+alias lservice='lsnrctl service'
+alias sqlplus='sqlplus system/passw0rd@localhost:1521/XE.ftagricola'
+
+alias rman0='rman target sys/passw0rd@localhost:1521/XE.ftagricola'
+alias oraclestart='/etc/init.d/oracle-xe-21c start'
+alias oraclenew='/etc/init.d/oracle-xe-21c configure'
