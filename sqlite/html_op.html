@@ -1,0 +1,37 @@
+<?php
+// (conexão igual ao bloco acima)
+$clientes = $pdo->query(
+    "SELECT id, nome, email FROM clientes WHERE ativo = 1 ORDER BY nome"
+)->fetchAll(PDO::FETCH_ASSOC);
+?>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Clientes</title>
+    <style>
+        body { font-family: sans-serif; padding: 2rem; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { padding: .6rem 1rem; border: 1px solid #ddd; text-align: left; }
+        th { background: #f4f4f4; }
+        tr:hover { background: #fafafa; }
+    </style>
+</head>
+<body>
+<h2>Lista de clientes</h2>
+<table>
+    <thead>
+        <tr><th>ID</th><th>Nome</th><th>E-mail</th></tr>
+    </thead>
+    <tbody>
+        <?php foreach ($clientes as $c): ?>
+        <tr>
+            <td><?= $c['id'] ?></td>
+            <td><?= htmlspecialchars($c['nome']) ?></td>
+            <td><?= htmlspecialchars($c['email']) ?></td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+</body>
+</html>
