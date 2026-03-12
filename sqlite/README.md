@@ -1,1 +1,5 @@
-O arquivo .db deve ficar fora do document root do Apache/Nginx (ex.: /var/www/db/) para que o navegador não consiga baixá-lo diretamente. Sempre escape a saída com htmlspecialchars() antes de jogar no HTML. O PDO funciona com a mesma sintaxe tanto para SQLite quanto para MySQL — quando precisar migrar para um banco "de verdade" (MariaDB, PostgreSQL), troca só a string de conexão e o driver, o resto do código PHP fica igual.
+O arquivo .db deve ficar fora do document root do Apache/Nginx (ex.: /var/www/db/) para que o navegador não consiga baixá-lo diretamente. Sempre escape a saída com htmlspecialchars() antes de jogar no HTML. 
+
+O PDO funciona com a mesma sintaxe tanto para SQLite quanto para MySQL 
+
+quando precisar migrar para um banco "de verdade" (MariaDB, PostgreSQL), troca só a string de conexão e o driver, o resto do código PHP fica igual.
